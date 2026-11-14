@@ -15,8 +15,6 @@ echo "built $APP ($VER)"
 [ "${1:-}" = dist ] || exit 0
 rm -rf dist && mkdir dist
 ditto -c -k --keepParent "$APP" "dist/AutoHotspot-$VER.zip"
-if command -v create-dmg >/dev/null; then
-  create-dmg --volname "Auto Hotspot" --window-size 540 340 --icon-size 96 --icon AutoHotspot.app 140 160 \
-    --app-drop-link 400 160 --hide-extension AutoHotspot.app "dist/AutoHotspot-$VER.dmg" "$APP" >/dev/null
-fi
+S=$(mktemp -d); cp -R "$APP" "$S/"; ln -s /Applications "$S/Applications"
+hdiutil create -quiet -volname "Auto Hotspot" -srcfolder "$S" -fs HFS+ -format UDZO -ov "dist/AutoHotspot-$VER.dmg"; rm -rf "$S"
 ( cd dist && shasum -a 256 ./*.zip ./*.dmg 2>/dev/null | sed 's# \./# #' > SHA256SUMS.txt && cat SHA256SUMS.txt )

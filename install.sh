@@ -17,6 +17,7 @@ if [ "${1:-}" = uninstall ]; then
   launchctl bootout "$DOMAIN/$LABEL" 2>/dev/null || true
   rm -rf "$APP" "$PLIST" "$CLI" "$HOME/Library/Logs/.AutoHotspot.lock"
   defaults delete "$LABEL" >/dev/null 2>&1 || true
+  rm -f "$HOME/Library/Preferences/$LABEL.plist"; killall -u "$(id -un)" cfprefsd 2>/dev/null || true
   echo "Auto Hotspot removed (log kept at $LOG)"; exit 0
 fi
 

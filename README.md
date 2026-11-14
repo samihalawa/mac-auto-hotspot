@@ -35,6 +35,12 @@ auto-hotspot --status
 # link=1 internet=1 onHotspot=0 wifiOn=1 lidClosedOnBattery=0 paused=0 loginItem=1 knownWifiInRange=-
 ```
 
+With Homebrew:
+
+```sh
+brew install --cask --no-quarantine samihalawa/tap/auto-hotspot
+```
+
 Prefer a download? Get `AutoHotspot-<version>.dmg` from
 [Releases](https://github.com/samihalawa/mac-auto-hotspot/releases/latest), drag it to
 Applications and open it. It is not notarized, so the first time: right-click the app → **Open**.
@@ -60,6 +66,7 @@ Hotspot available (the same conditions as Apple's Instant Hotspot).
 | Options → **Open Log** | `~/Library/Logs/AutoHotspot.log`, one line per decision |
 
 The icon follows the state: Wi-Fi, hotspot, Wi-Fi with a warning, no network, connecting, paused.
+If your menu bar is full, macOS or a menu bar manager may tuck it behind the overflow arrow; drag it out with ⌘ held.
 
 ## Command line
 
@@ -128,12 +135,11 @@ Removes the app, the login item, the CLI link and its settings. The log stays in
 - Builds are ad-hoc signed, not notarized: a DMG install needs right-click → Open once.
 - macOS only decides that the phone is "nearby" over Bluetooth; with Bluetooth off nothing happens.
 - Joining uses `networksetup`; with some MDM profiles that restrict Wi-Fi changes it may be refused.
-- A reboot test of the login item has not been done for this release; launchd restart after a crash has.
+- The login item was tested by unloading and loading it and by killing the app; a full reboot was not run for this release.
 
 ## Contributing
 
-Issues and pull requests are welcome. Keep it one small file; describe the macOS and iOS
-versions you tested on.
+Issues and pull requests are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Licence
 
