@@ -47,7 +47,7 @@ fi
 
 launchctl bootout "$DOMAIN/$LABEL" 2>/dev/null || true
 rm -rf "$APP"; mv "$T/out/AutoHotspot.app" "$APP"
-xattr -dr com.apple.quarantine "$APP" 2>/dev/null || true
+/usr/bin/xattr -dr com.apple.quarantine "$APP" >/dev/null 2>&1 || true
 ln -sf "$BIN" "$CLI"
 defaults write "$LABEL" launchedBefore -bool true
 
