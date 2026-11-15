@@ -19,7 +19,7 @@
 #import <objc/message.h>
 
 #define LABEL @"io.github.samihalawa.autohotspot"
-#define VERSION @"1.0.1"
+#define VERSION @"1.0.2"
 
 static NSString *logPath(void){ return [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Logs/AutoHotspot.log"]; }
 static NSString *plistPath(void){ return [NSHomeDirectory() stringByAppendingPathComponent:@"Library/LaunchAgents/" LABEL ".plist"]; }

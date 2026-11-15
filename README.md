@@ -43,8 +43,8 @@ brew install --cask samihalawa/tap/auto-hotspot
 
 Prefer a download? Get `AutoHotspot-<version>.dmg` from
 [Releases](https://github.com/samihalawa/mac-auto-hotspot/releases/latest), drag it to
-Applications and open it. It is not notarized, so the first time: right-click the app → **Open**.
-On first launch it adds its own login item.
+Applications and open it. It is signed with a Developer ID and notarized by Apple, so it opens
+without a Gatekeeper warning. On first launch it adds its own login item.
 
 **Requirements:** an iPhone signed in to the same Apple Account, with Bluetooth and Personal
 Hotspot available (the same conditions as Apple's Instant Hotspot).
@@ -132,7 +132,6 @@ Removes the app, the login item, the CLI link and its settings. The log stays in
 
 ## Limitations
 
-- Builds are ad-hoc signed, not notarized: a DMG install needs right-click → Open once.
 - macOS only decides that the phone is "nearby" over Bluetooth; with Bluetooth off nothing happens.
 - Joining uses `networksetup`; with some MDM profiles that restrict Wi-Fi changes it may be refused.
 - The login item was tested by unloading and loading it and by killing the app; a full reboot was not run for this release.
