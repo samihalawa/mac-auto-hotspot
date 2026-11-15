@@ -6,8 +6,8 @@ labels: bug
 
 **What happened, and what you expected**
 
-**Versions**: macOS … / iOS … / Mac model … / Auto Hotspot `auto-hotspot --version`
+**Versions**: macOS … / iOS … / Mac model … / Auto Hotspot `autohotspot --version`
 
-**`auto-hotspot --status` output**
+**`autohotspot --status` output**
 
 **Last 20 lines of `~/Library/Logs/AutoHotspot.log`** (remove your phone's name if you prefer)

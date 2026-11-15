@@ -31,14 +31,14 @@ This downloads the latest release, checks its SHA-256, installs `AutoHotspot.app
 Check it:
 
 ```sh
-auto-hotspot --status
+autohotspot --status
 # link=1 internet=1 onHotspot=0 wifiOn=1 lidClosedOnBattery=0 paused=0 loginItem=1 knownWifiInRange=-
 ```
 
 With Homebrew:
 
 ```sh
-brew install --cask samihalawa/tap/auto-hotspot
+brew install --cask samihalawa/tap/autohotspot
 ```
 
 Prefer a download? Get `AutoHotspot-<version>.dmg` from
@@ -70,15 +70,15 @@ If your menu bar is full, macOS or a menu bar manager may tuck it behind the ove
 
 ## Command line
 
-The app binary is also a CLI (`~/.local/bin/auto-hotspot` after the script install):
+The app binary is also a CLI (`~/.local/bin/autohotspot` after the script install):
 
 | Command | Effect |
 |---|---|
-| `auto-hotspot --status` | Print what it sees now |
-| `auto-hotspot --test` | Wake the iPhone's hotspot without joining it (exits 0 when the phone answers) |
-| `auto-hotspot --force` | Turn on the hotspot and join it now |
-| `auto-hotspot --headless` | Run the watcher without a menu bar icon |
-| `auto-hotspot --version` | Print the version |
+| `autohotspot --status` | Print what it sees now |
+| `autohotspot --test` | Wake the iPhone's hotspot without joining it (exits 0 when the phone answers) |
+| `autohotspot --force` | Turn on the hotspot and join it now |
+| `autohotspot --headless` | Run the watcher without a menu bar icon |
+| `autohotspot --version` | Print the version |
 
 ## How it behaves
 

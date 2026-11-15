@@ -8,14 +8,14 @@ REPO=samihalawa/mac-auto-hotspot
 LABEL=io.github.samihalawa.autohotspot
 APP="$HOME/Applications/AutoHotspot.app"
 BIN="$APP/Contents/MacOS/AutoHotspot"
-CLI="$HOME/.local/bin/auto-hotspot"
+CLI="$HOME/.local/bin/autohotspot"; OLDCLI="$HOME/.local/bin/auto-hotspot"
 PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
 LOG="$HOME/Library/Logs/AutoHotspot.log"
 DOMAIN="gui/$(id -u)"
 
 if [ "${1:-}" = uninstall ]; then
   launchctl bootout "$DOMAIN/$LABEL" 2>/dev/null || true
-  rm -rf "$APP" "$PLIST" "$CLI" "$HOME/Library/Logs/.AutoHotspot.lock"
+  rm -rf "$APP" "$PLIST" "$CLI" "$OLDCLI" "$HOME/Library/Logs/.AutoHotspot.lock"
   defaults delete "$LABEL" >/dev/null 2>&1 || true
   rm -f "$HOME/Library/Preferences/$LABEL.plist"; killall -u "$(id -un)" cfprefsd 2>/dev/null || true
   echo "Auto Hotspot removed (log kept at $LOG)"; exit 0
@@ -49,7 +49,7 @@ fi
 launchctl bootout "$DOMAIN/$LABEL" 2>/dev/null || true
 rm -rf "$APP"; mv "$T/out/AutoHotspot.app" "$APP"
 /usr/bin/xattr -dr com.apple.quarantine "$APP" >/dev/null 2>&1 || true
-ln -sf "$BIN" "$CLI"
+rm -f "$OLDCLI"; ln -sf "$BIN" "$CLI"
 defaults write "$LABEL" launchedBefore -bool true
 
 cat > "$PLIST" <<EOF
@@ -68,5 +68,5 @@ EOF
 launchctl bootstrap "$DOMAIN" "$PLIST"
 sleep 2
 echo "Installed Auto Hotspot $("$BIN" --version) -> $APP"
-echo "Menu bar icon is up. Check it: auto-hotspot --status   Log: $LOG"
-case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) echo "(add ~/.local/bin to PATH to use the auto-hotspot command)";; esac
+echo "Menu bar icon is up. Check it: autohotspot --status   Log: $LOG"
+case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) echo "(add ~/.local/bin to PATH to use the autohotspot command)";; esac
