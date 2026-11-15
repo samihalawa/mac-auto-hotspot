@@ -38,7 +38,8 @@ autohotspot --status
 With Homebrew:
 
 ```sh
-brew install --cask samihalawa/tap/autohotspot
+brew tap samihalawa/tap
+brew install --cask autohotspot
 ```
 
 Prefer a download? Get `AutoHotspot-<version>.dmg` from
